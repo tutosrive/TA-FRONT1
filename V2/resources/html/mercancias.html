@@ -1,0 +1,56 @@
+<!-- 
+    Formulario para la adición y edición de clientes
+    Note que cada <input> tiene un ID que lo identifica de manera única.
+    Consulte en https://www.w3schools.com/html/html_form_input_types.asp los tipos de cada <input>
+    Consulte también en https://www.w3schools.com/html/html_form_attributes.asp los atributos utlizados aquí
+    Con base en este formulario puede implementar los demás que se requieren
+ -->
+<form id="form-mercancias">
+  <fieldset>
+    <!-- IMPORTANTE: no es necesario mostrar el ID de los clientes, por eso type="hidden"  -->
+    <div class="form-group mx-2">
+      <label for="id" class="form-label mt-0 mb-0">Identificación</label>
+      <input type="text" class="form-control" id="id" name="id" required />
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="clientes" class="form-label mt-0 mb-0">Clientes</label>
+      <select class="form-select" id="clientes" name="clientes" required></select>
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="contenido" class="form-label mt-0 mb-0">Contenido</label>
+      <input type="text" class="form-control" id="contenido" name="contenido" required minlength="4" />
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="bodega" class="form-label mt-0 mb-0">Bodega</label>
+      <input type="text" class="form-control" id="bodega" name="bodega" required minlength="4" />
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="alto" class="form-label mt-0 mb-0">Alto &lpar;metros&rpar;</label>
+      <input type="number" class="form-control" id="alto" name="alto" required max="2.59" min="0.1" step="0.1" />
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="ancho" class="form-label mt-0 mb-0">Ancho &lpar;metros&rpar;</label>
+      <input type="number" class="form-control" id="ancho" name="ancho" required max="2.44" min="0.1" step="0.1" />
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="largo" class="form-label mt-0 mb-0">Largo &lpar;metros&rpar;</label>
+      <input type="number" class="form-control" id="largo" name="largo" required max="12.19" min="0.1" step="0.1" />
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="ingreso" class="form-label mt-2 mb-0">Ingreso</label>
+      <input type="datetime-local" class="form-control" id="ingreso" name="ingreso" required />
+    </div>
+
+    <div class="form-group mx-2">
+      <label for="salida" class="form-label mt-2 mb-0">Salida</label>
+      <input type="datetime-local" class="form-control" id="salida" name="salida" required />
+    </div>
+  </fieldset>
+</form>
