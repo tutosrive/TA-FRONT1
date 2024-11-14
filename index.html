@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/assets/img/favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>API JAVA</title>
+  </head>
+  <body onload="get('', ['message'])">
+    <header>
+      <img
+        src="assets/img/favicon/favicon.ico"
+        alt="Transportadora Andina"
+        class="favicon"
+      />
+      <h1 class="title-main center">API T.A. - SRM</h1>
+      <nav>
+        <a
+          onclick="get('/cliente',['id','nombre','ciudad','direccion','telefono',])"
+          class="nav-cliente"
+          ><img
+            src="assets/img/svg/cliente.svg"
+            alt="Icono de un cliente"
+            title="Cliente"
+        /></a>
+        <a
+          onclick="get('/sobre',['id', 'tipo', 'contenido', 'costo'])"
+          class="nav-sobre"
+          ><img
+            src="assets/img/svg/sobre.svg"
+            alt="Icono de un sobre"
+            title="Sobre"
+        /></a>
+        <a
+          onclick="get('/paquete',['id', 'tipo', 'contenido', 'costo'])"
+          class="nav-paquete"
+          ><img
+            src="assets/img/svg/paquete.svg"
+            alt="Icono de un paquete"
+            title="Paquete"
+        /></a>
+        <a
+          onclick="get('/bulto',['id', 'tipo', 'contenido', 'costo'])"
+          class="nav-bulto"
+          ><img
+            src="assets/img/svg/bulto.svg"
+            alt="Icono de un bulto"
+            title="Bulto"
+        /></a>
+        <a
+          onclick="get('/caja',['id', 'tipo', 'contenido', 'costo'])"
+          class="nav-caja"
+          ><img
+            src="assets/img/svg/caja.svg"
+            alt="Icono de un caja"
+            title="Caja"
+        /></a>
+        <a
+          onclick="get('/mercancia',['id', 'contenido', 'bodega', 'costo', 'volumen'])"
+          class="nav-mercancia"
+          ><img
+            src="assets/img/svg/mercancia.svg"
+            alt="Icono de un mercancia"
+            title="Mercancia"
+        /></a>
+      </nav>
+    </header>
+
+    <div id="container" class="center">
+      <div id="data"></div>
+    </div>
+
+    <div id="container-table" class="table-cont">
+      <table cellspacing="0" cellpadding="8">
+        <thead>
+          <tr id="head-title"></tr>
+        </thead>
+        <tbody id="body-table"></tbody>
+      </table>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
