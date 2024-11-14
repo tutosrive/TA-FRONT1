@@ -11,12 +11,6 @@ export default class Mercancias {
 
   static async init() {
     try {
-      // intentar cargar los datos de los usuarios
-      const response = await Helpers.fetchJSON(`${urlAPI}/mercancia`)
-      if (response.message != 'ok') {
-        throw new Error(response.message)
-      }
-
       const clients = await Helpers.fetchJSON(`${urlAPI}/cliente`)
       if (clients.message != 'ok') {
         throw new Error(clients.message)
@@ -30,6 +24,15 @@ export default class Mercancias {
         value: 'id',
         text: 'id',
       })
+
+      // intentar cargar los datos de las mercancías
+      const response = await Helpers.fetchJSON(`${urlAPI}/mercancia`)
+      // Si no existe el archivo.json, se muestra el formulario y proceder a crear una mercancía
+      if (response.message == 'Sin acceso a datos de mercancías') {
+        Mercancias.#addRow()
+      } else if (response.message != 'ok') {
+        throw new Error(response.message)
+      }
 
       // agregar al <main> de index.html la capa que contendrá la tabla
       document.querySelector('main').innerHTML = `
@@ -90,7 +93,7 @@ export default class Mercancias {
       title: '<h5>Ingreso de mercancías</h5>',
       content: Mercancias.#form,
       buttons: [
-        { caption: editButton, classes: 'btn btn-primary me-2', action: () => Mercancias.#add() },
+        { caption: editButton, classes: 'btn btn-primary me-2', action: () => Mercancias.#edit(cell) },
         { caption: cancelButton, classes: 'btn btn-secondary', action: () => Mercancias.#modal.remove() },
       ],
       doSomething: idModal => Mercancias.#displayDataOnForm(idModal, cell.getRow().getData()),
@@ -153,6 +156,43 @@ export default class Mercancias {
         Mercancias.#modal.remove()
         // Mostrar una notificación con un mensaje de éxito
         Toast.show({ message: 'Agregado exitosamente' })
+      } else {
+        throw new Error(response.message)
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  static async #edit(cell) {
+    try {
+      if (!Helpers.okForm('#form-mercancias')) {
+        throw new Error('Formulario inválido')
+      }
+
+      const clients = document.querySelector('#clientes')
+      const id = document.querySelector('#id').value
+
+      const body = {
+        cliente: clients.options[clients.selectedIndex].text,
+        alto: document.querySelector('#alto').value,
+        bodega: document.querySelector('#bodega').value,
+        ancho: document.querySelector('#ancho').value,
+        largo: document.querySelector('#largo').value,
+        contenido: document.querySelector('#contenido').value,
+        fechaHoraIngreso: document.querySelector('#ingreso').value,
+        fechaHoraSalida: document.querySelector('#salida').value,
+      }
+
+      const response = await Helpers.fetchJSON(`${urlAPI}/mercancia/${id}`, {
+        method: 'PATCH',
+        body: body,
+      })
+
+      if (response.message === 'ok') {
+        cell.getRow().update(response.data) // agregar la mercancía a la tabla
+        Mercancias.#modal.remove()
+        Toast.show({ message: 'Actualizado exitosamente' })
       } else {
         throw new Error(response.message)
       }

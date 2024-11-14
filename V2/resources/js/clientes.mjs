@@ -11,12 +11,6 @@ export default class Clientes {
 
   static async init() {
     try {
-      // Intentar cargar los datos de los datos de los clientes
-      const response = await Helpers.fetchJSON(`${urlAPI}/cliente`)
-      if (response.message != 'ok') {
-        throw new Error(response.message)
-      }
-
       // Se carga el formulario de clientes
       Clientes.#form = await Helpers.fetchText('./resources/html/clientes.html')
       // Se crea una lista de opciones para el select "ciudad"
@@ -25,6 +19,15 @@ export default class Clientes {
         value: 'codigo',
         text: 'nombre',
       })
+
+      // intentar cargar los datos de las mercancías
+      const response = await Helpers.fetchJSON(`${urlAPI}/cliente`)
+      // Si no existe el archivo.json, se muestra el formulario y proceder a crear una mercancía
+      if (response.message == 'Sin acceso a datos de clientes') {
+        Clientes.#addRow()
+      } else if (response.message != 'ok') {
+        throw new Error(response.message)
+      }
 
       // Agregar al <main> index.html el contenedor de la tabla
       document.querySelector('main').innerHTML = `
@@ -124,7 +127,7 @@ export default class Clientes {
       title: '<h5>Ingreso de clientes</h5>',
       content: Clientes.#form,
       buttons: [
-        { caption: editButton, classes: 'btn btn-primary me-2', action: () => Clientes.#add() },
+        { caption: editButton, classes: 'btn btn-primary me-2', action: () => Clientes.#edit(cell) },
         { caption: cancelButton, classes: 'btn btn-secondary', action: () => Clientes.#modal.remove() },
       ],
       doSomething: idModal => Clientes.#displayDataOnForm(idModal, cell.getRow().getData()),
@@ -133,7 +136,36 @@ export default class Clientes {
   }
 
   static async #edit(cell) {
-    console.warn('Sin implementar Clientes.edit()')
+    try {
+      if (!Helpers.okForm('#form-clientes')) {
+        throw new Error('Formulario inválido')
+      }
+
+      const cities = document.querySelector('#ciudad')
+      const id = document.querySelector('#id').value
+
+      const body = {
+        nombre: document.querySelector('#nombre').value,
+        ciudad: cities.options[cities.selectedIndex].text,
+        direccion: document.querySelector('#direccion').value,
+        telefono: document.querySelector('#telefono').value,
+      }
+
+      const response = await Helpers.fetchJSON(`${urlAPI}/cliente/${id}`, {
+        method: 'PATCH',
+        body: body,
+      })
+
+      if (response.message === 'ok') {
+        cell.getRow().update(response.data) // agregar el usuario a la tabla
+        Clientes.#modal.remove()
+        Toast.show({ message: 'Actualizado exitosamente' })
+      } else {
+        throw new Error(response.message)
+      }
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   static #deleteRowClick = async (e, cell) => {
