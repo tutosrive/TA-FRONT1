@@ -1,0 +1,145 @@
+/* @import '../utils/tabulator-6.3/css/tabulator.min.css'; */
+@import '../utils/tabulator-6.3/css/tabulator.css';
+
+/* 
+En ../utils/bootstrap-5.3.3/css, además de flatly, encuentra otros temas como cerulean, cosmo, cyborg, ...  
+Use ../utils/bootstrap-5.3.3/css/TEMA/bootstrap.min.css, siendo TEMA el nombre de la carpeta correspondiente al tema
+*/
+@import '../utils/bootstrap-5.3.3/css/vapor/bootstrap.min.css';
+@import 'toast.css';
+
+a {
+  text-decoration: none;
+}
+
+.dialog {
+  background-color: #fff;
+  /* 
+      El primer caso sólo fija el color, el segundo es un atajo para especificar varias propiedades
+      background-color: rgba(0, 0, 0, 0.05); 
+      background: url("image.jpg") #00D repeat-y fixed;
+    */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  /* width: 700px; */
+  max-width: 80%;
+  max-height: 100vh;
+  /* juegue con la posición requerida: */
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.dialog header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog #_close {
+  font-size: 1rem;
+  border: 1.5px solid #7700ff;
+  border-radius: 5px;
+  margin: 0;
+  background: transparent;
+}
+
+.dialog #_close:hover {
+  color: rgb(202, 0, 0);
+  border: 1.5px solid rgb(202, 0, 0);
+}
+
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dialog footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog section {
+  overflow: auto;
+  max-height: 80vh;
+}
+
+/* 
+
+*/
+
+/* Propuesta 1 */
+/* #table-container .tabulator-col,
+#table-container > div {
+  background-color: #040116;
+  color: #281f61;
+}
+
+#table-container .tabulator-cell {
+  border: 0.1vb solid #212529;
+  background-color: #1d1359;
+  color: #b2a7fa;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+}
+
+#table-container .tabulator-tableholder {
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #6c80b3 #212529;
+}
+
+#table-container .tabulator-tableholder::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+  background-color: #212529;
+}
+
+#table-container .tabulator-tableholder::-webkit-scrollbar-thumb {
+  background-color: #6c80b3;
+  border-radius: 5px;
+  border: 2px solid #f0f0f0;
+}
+
+#table-container .tabulator-cell:hover {
+  background-color: #7f96d3;
+} */
+
+/* propuesta 2 */
+/* 
+#table-container .tabulator-col,
+#table-container > div {
+  background-color: #040116;
+  color: #44d9e8;
+}
+
+#table-container .tabulator-cell {
+  border: 0.1vb solid var(--bs-primary-border-subtle);
+  background-color: #040116;
+  color: var(--bs-white);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 400;
+}
+
+#table-container .tabulator-tableholder {
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bs-primary) #212529;
+}
+
+#table-container .tabulator-tableholder::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+  background-color: var(--bs-dark-bg-subtle);
+}
+
+#table-container .tabulator-tableholder::-webkit-scrollbar-thumb {
+  background-color: #6c80b3;
+}
+
+#table-container .tabulator-cell:hover {
+  background-color: var(--bs-gray);
+  color: var(--bs-dark);
+} */
