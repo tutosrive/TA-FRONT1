@@ -68,6 +68,8 @@ body {
   max-height: 80vh;
 }
 
-.logo-header {
-  /* mix-blend-mode: luminosity; */
+html {
+  /* Barras de Scroll */
+  scrollbar-width: thin;
+  scrollbar-color: #6900be #040116;
 }

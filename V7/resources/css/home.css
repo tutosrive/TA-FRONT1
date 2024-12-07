@@ -1,7 +1,6 @@
 .logo-img {
   filter: drop-shadow(1px 1px 4px rgb(255, 255, 255));
-  mix-blend-mode: color-dodge;
-  /* mix-blend-mode: hard-light; */
+  /* mix-blend-mode: color-dodge; */
 }
 
 .rounded {
