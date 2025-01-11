@@ -43,7 +43,7 @@ export default class About {
             About.#popover('https://www.instagram.com/santiago.riveramarin.524/?utm_source=ig_web_button_share_sheet')
             break
           case 'email':
-            About.#popoverMail('santiago.rivera55296@ucaldas.edu.co')
+            About.#popoverMail('srm-ta@outlook.com')
             break
           case 'youtube':
             About.#popover('https://youtube.com/@ingesrm?si=nQLdiopmGLhW43TB')
