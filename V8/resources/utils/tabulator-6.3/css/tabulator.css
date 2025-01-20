@@ -617,7 +617,7 @@
   .tabulator-row.tabulator-selectable:hover {
     background-color: #0c004d;
     color: #00eaff;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Arial Narrow Bold', sans-serif;
     font-style: italic;
     font-weight: 900;
     padding: 2px 0px;
