@@ -1,4 +1,5 @@
 # FRONTEND TRANSPORTADORA ANDINA
 
-- Está claro que el **servidor** debe estar en **ejecución**.
-- Servidor: **[Koyeb](https://comprehensive-harrie-trg-670f482b.koyeb.app/)**.
+Transportadora Andina, no es una empresa real, al menos no en este repositorio, fue un nombre aleatorio que se tomó en el curso de mi **universidad** para darle una identidad a nuestro proyecto. 
+
+- Servidor: **[Render.com](https://tabc.onrender.com/)**.
