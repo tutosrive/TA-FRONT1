@@ -96,7 +96,7 @@ export default class About {
    * @param {*} msg Mensaje que se mostrará antes del link, existe un por defecto pero si desea cambiarse...
    */
   static #popover(url = 'https://srm-ta.onrender.com/', msg = 'Acepta ser redireccionado a:') {
-    const buttons = [`<button id="r-true" class="btn btn-success text-success">Sí acepto</button>`, `<button id="r-false" class="btn btn-danger text-danger">No acepto</button>`]
+    const buttons = [`<button id="r-true" class="btn btn-success text-dark">Sí acepto</button>`, `<button id="r-false" class="btn btn-danger text-dark">No acepto</button>`]
     // const classes = 'bg-dark'
     const classes = 'bg-dark'
     const pop = Customs.popover('Autorizar Redirección', `${msg}<br> <span class="text-danger user-select-all">${url}</span>`, buttons, classes)
@@ -109,7 +109,7 @@ export default class About {
    * @param {*} email Dirección E-Mail (Correo Electrónico)
    */
   static #popoverMail(email = 'tutosrivegamer@gmail.com') {
-    const buttons = [`<button id="r-true" class="btn btn-success text-succes">Sí acepto</button>`, `<button id="r-false" class="btn btn-danger text-danger">No acepto</button>`]
+    const buttons = [`<button id="r-true" class="btn btn-success text-dark">Sí acepto</button>`, `<button id="r-false" class="btn btn-danger text-dark">No acepto</button>`]
     const classes = 'bg-dark'
     const pop = Customs.popover('E-Mail de contacto', `Puede redactar un correo a esta dirección para comunicarse conmigo: <br><br><span class="d-block text-center text-info user-select-all" style="font-size: 20px">${email}</span><br><span class="d-block text-center text-success">(Presione "Sí admito" para redactar un correo)</span>`, buttons, classes)
     Customs.showPopover(pop)
