@@ -39,7 +39,7 @@ export default class About {
         const dataName = e.target.dataset.name.toLowerCase()
         switch (dataName) {
           case 'github':
-            About.#popover('https://github.com/tutosrivegamerLQ')
+            About.#popover('https://github.com/tutosrive')
             break
           case 'instagram':
             About.#popover('https://www.instagram.com/santiago.riveramarin.524/?utm_source=ig_web_button_share_sheet')
